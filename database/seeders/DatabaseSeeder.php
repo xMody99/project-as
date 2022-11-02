@@ -14,23 +14,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-//
-//        DB::table('categories')->insert([
-//            'name' => 'buty'
-//        ]);
-//
-//        DB::table('categories')->insert([
-//            'name' => 'kurtki'
-//        ]);
-//
-//        DB::table('categories')->insert([
-//            'name' => 'płaszcze'
-//        ]);
-//
-//        DB::table('categories')->insert([
-//            'name' => 'sukienki'
-//        ]);
+//         \App\Models\User::factory(10)->create();
+
+        DB::table('categories')->insert([
+            'name' => 'buty'
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'kurtki'
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'płaszcze'
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'sukienki'
+        ]);
 
         for($i = 0; $i < 10; $i++) {
             DB::table('products')->insert([

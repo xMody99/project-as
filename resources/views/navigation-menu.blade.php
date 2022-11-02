@@ -74,7 +74,7 @@
                         </x-jet-dropdown>
                     </div>
                 @endif
-
+                <livewire:cart/>
                 <!-- Settings Dropdown -->
                 @if (auth()->user())
                     <div class="ml-3 relative">

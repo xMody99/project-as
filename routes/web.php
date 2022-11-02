@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,4 @@ Route::middleware([
 
 //Route::get('/categories', [CategoriesController::class, 'index'])->name('categories');
 Route::resource('category', CategoryController::class)->name('GET', 'category');
+Route::resource('product', Product::class)->name('GET', 'product');
