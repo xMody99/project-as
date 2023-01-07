@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product as ProductModel;
 
@@ -101,6 +102,14 @@ class Product extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = ProductModel::findOrFail($id);
+        $productCategory = Category::find($product->categoryId);
+        $product->delete();
+
+        if ($productCategory) {
+            return redirect(route('category.show', ['category' => $productCategory]));
+        }
+
+        return redirect('/');
     }
 }

@@ -88,6 +88,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $products = $category->products;
+        $category->delete();
+
+        foreach ($products as $product) {
+            $product->delete();
+        }
+
+        return redirect('/');
     }
 }
