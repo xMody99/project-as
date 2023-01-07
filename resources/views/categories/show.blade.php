@@ -17,6 +17,11 @@
                             Dodaj produkt
                         </button>
                     </a>
+                    <a href="{{route('category.edit', ['category' => $category])}}">
+                        <button type="button" class="inline-flex items-right mt-2 px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-4">
+                            Edytuj kategorie
+                        </button>
+                    </a>
                 @endif
 
                 @if(count($category->products) > 0 )
