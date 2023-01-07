@@ -22,6 +22,13 @@
                         {{ __('category') }}
                     </x-jet-nav-link>
                 </div>
+                @if (auth()->user()?->isAdmin())
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
+                            {{ __('Users') }}
+                        </x-jet-nav-link>
+                    </div>
+                @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

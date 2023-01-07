@@ -22,9 +22,15 @@ class Product extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $categoryId = $request->get('categoryId');
+
+        if (!$categoryId) {
+            abort(404);
+        }
+
+        return view('products.create', compact('categoryId'));
     }
 
     /**
@@ -35,7 +41,13 @@ class Product extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new ProductModel();
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->categoryId = $request->input('categoryId');
+        $product->save();
+
+        return redirect(route('product.show', ['product' => $product]));
     }
 
     /**

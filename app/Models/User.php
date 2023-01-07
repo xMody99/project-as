@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -58,4 +59,24 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+    }
+
+    public function role()
+    {
+        return $this->hasOne(Role::class, 'id', 'roleId');
+    }
+
+    public function isAdmin()
+    {
+        return $this->roleId == Role::$ADMINID;
+    }
+
+    public function isModerator()
+    {
+        return $this->roleId == Role::$MODID;
+    }
 }

@@ -11,6 +11,14 @@
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{$category->name}}</h2>
                 <hr class="my-3">
 
+                @if(auth()->user()?->isModerator())
+                    <a href="{{route('product.create', ['categoryId' => $category->id])}}">
+                        <button type="button" class="inline-flex items-right mt-2 px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-4">
+                            Dodaj produkt
+                        </button>
+                    </a>
+                @endif
+
                 @if(count($category->products) > 0 )
                     <div class="grid grid-cols-4 gap-4">
                     @foreach ($category->products as $product)
