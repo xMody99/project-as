@@ -51,7 +51,11 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        $products = Product::where('categoryId', $category->id)->paginate(5);
+        if (isset($_GET['search'])) {
+            $products = Product::where('categoryId', $category->id)->where('name', 'like', '%' .$_GET['search'] . '%')->paginate(5);
+        } else {
+            $products = Product::where('categoryId', $category->id)->paginate(5);
+        }
 
         return view('categories.show', compact('category', 'products'));
     }
