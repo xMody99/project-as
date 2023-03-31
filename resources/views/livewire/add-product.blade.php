@@ -23,10 +23,4 @@
         @endif
 
     </div>
-
-    @if($error)
-      error
-    @elseif($success)
-        success
-    @endif
 </div>

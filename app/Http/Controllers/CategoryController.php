@@ -49,9 +49,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::with('products')->findOrFail($id);
+        $category = Category::findOrFail($id);
 
-        return view('categories.show', compact('category'));
+        $products = Product::where('categoryId', $category->id)->paginate(5);
+
+        return view('categories.show', compact('category', 'products'));
     }
 
     /**

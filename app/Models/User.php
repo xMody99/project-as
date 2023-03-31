@@ -77,6 +77,6 @@ class User extends Authenticatable
 
     public function isModerator()
     {
-        return $this->roleId == Role::$MODID;
+        return ($this->roleId == Role::$MODID);
     }
 }

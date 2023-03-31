@@ -31,16 +31,18 @@
                     </form>
                 @endif
 
-                @if(count($category->products) > 0 )
+                @if(count($products) > 0 )
                     <div class="grid grid-cols-4 gap-4">
-                    @foreach ($category->products as $product)
+                    @foreach ($products as $product)
                         <a href="{{route('product.show', ['product' => $product->id])}}" class="text-center shadow-lg mb-4 pb-3">
                             <img src="{{url('/images/palceholder.png')}}" alt="Placeholder"/>
                             <p>{{$product->name}}</p>
                             <p>{{$product->price}}zł</p>
                         </a>
                     @endforeach
-                    </div>
+
+                </div>
+                {{ $products->links() }}
                 @else
                     Brak produktów dla podanej kategorii
                 @endif
